@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ess-react/static/css/main.881fbcd8.css",
+    "main.js": "/ess-react/static/js/main.28621f38.js",
+    "static/js/787.42885938.chunk.js": "/ess-react/static/js/787.42885938.chunk.js",
+    "index.html": "/ess-react/index.html",
+    "main.881fbcd8.css.map": "/ess-react/static/css/main.881fbcd8.css.map",
+    "main.28621f38.js.map": "/ess-react/static/js/main.28621f38.js.map",
+    "787.42885938.chunk.js.map": "/ess-react/static/js/787.42885938.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.881fbcd8.css",
+    "static/js/main.28621f38.js"
+  ]
+}
