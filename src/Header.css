@@ -1,0 +1,99 @@
+header {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    z-index: 4;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+}
+
+header a {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    line-height: 60px;
+    color: black;
+    font-family: Charter-BlackItalic, serif;
+    background: linear-gradient(90deg, #4158D0, #C850C0, #FFCC70);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300% auto;
+    animation: gradientEffect 1.5s infinite alternate;
+}
+
+@keyframes gradientEffect {
+    from {background-position: left;}
+    to {background-position: right;}
+}
+
+header a img {
+    margin: 15px;
+    width: 30px;
+    height: 30px;
+}
+
+header nav {
+    width: 46px;
+    height: 46px;
+    margin: auto 10px;
+    cursor: pointer;
+}
+
+header nav .bar {
+    margin-top: 10px;
+    width: 80%;
+    height: 2px;
+    background-color: black;
+    transition: all 0.5s;
+}
+
+header .open .bar:nth-child(1) {
+    transform: translateY(12px) rotate(405deg);
+}
+
+header .open .bar:nth-child(2) {
+    transform: translateX(100px);
+}
+
+header .open .bar:nth-child(3) {
+    transform: translateY(-12px) rotate(-405deg);
+}
+
+.nav-menu {
+    position: fixed;
+    top: -1000px;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    padding-top: 80px;
+    transition: all 0.5s;
+    z-index: 3;
+}
+
+.nav-menu li {
+    width: 80%;
+    margin: 20px auto;
+    border-bottom: solid 1px gray;
+    text-align: center;
+}
+
+.nav-menu li a {
+    font-size: 0.8em;
+    color: gray;
+}
+
+.open .nav-menu {
+    top: 0px; 
+}
+
+.air {
+    width: 100vw;
+    height: 60px;
+}
+
+main {
+    margin-bottom: 30px;
+}

@@ -1,0 +1,166 @@
+form {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#student_id {
+    width: 75%;
+    height: 40px;
+    padding-left: 20px;
+    border-radius: 22px 0 0 22px;
+    font-size: 0.5em;
+}
+
+#submit {
+    width: 25%;
+    height: 44px;
+    border-radius: 0 22px 22px 0;
+    font-size: 0.7em;
+    background-color: blue;
+    color: white;
+    border: none;
+}
+
+.login_message {
+    width: 80%;
+    margin: 20px auto;
+    font-size: 0.6em;
+    text-align: center;
+    border-bottom: solid 1px gray;
+}
+
+.error_message {
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+    border: solid 1px #198754;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.error_message p {
+    margin: 0 auto;
+    width: 90%;
+    color: #198754;
+    font-size: 0.6em;
+}
+
+/* dash_bord.html */
+
+.dash_bord input {
+    display: none;
+}
+
+.dash_bord {
+    width: 90%;
+    border-top: solid 1px gray;
+    margin: 20px auto;
+}
+
+
+.dash_bord label {
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    height: 50px;
+    padding-left: 10px;
+    line-height: 50px;
+    border-bottom: solid 1px gray;
+}
+
+.dash_bord label .state {
+    width: 50px;
+    height: 50px;
+    margin-left: auto;
+    background-color: rgb(200, 200, 200);
+    text-align: center;
+}
+
+.dash_bord .student_info_content{
+    height: 0;
+    opacity: 0;
+    transition: .5s;
+    visibility: hidden;
+}
+.dash_bord #student_info:checked + .student_info_label + .student_info_content{
+    height: 217px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.dash_bord #student_info:checked + .student_info_label + .phrases{
+    height: 261px;
+}
+
+.dash_bord .student_info_content .latest_login {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: solid 1px gray;
+}
+
+.dash_bord .student_info_content .latest_login p {
+    font-size: 0.8em;
+    line-height: 40px;
+}
+
+.dash_bord .student_info_content .score {
+    display: flex;
+    justify-content: space-around;
+}
+
+.dash_bord .student_info_content .score p {
+    width: 40%;
+    font-size: 0.8em;
+    line-height: 40px;
+    text-align: center;
+}
+
+.dash_bord .student_info_content .score .detail {
+    width: 50%;
+    line-height: 40px;
+    font-size: 0.7em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dash_bord .student_info_content .score .cycle {
+    width: 18px;
+    height: 18px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: solid 1px #0d6efd;
+}
+
+.dash_bord .student_info_content .score img {
+    margin: 10px 0;
+    width: 20px;
+    height: 20px;
+}
+
+.dash_bord .student_info_content .score span {
+    font-size: 1em;
+}
+
+.dash_bord .student_info_content .statebar {
+    width: 100%;
+    height: 2px;
+    display: flex;
+}
+
+.bar-blue {
+    width: 0%;
+    height: 2px;
+    background-color: #0d6efd;
+}
+
+.bar-red {
+    width: 0%;
+    height: 2px;
+    background-color: #dc3545;
+}
+
+.bar-gray {
+    width: 100%;
+    height: 2px;
+    background-color: gray;
+}

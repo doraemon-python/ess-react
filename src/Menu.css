@@ -1,0 +1,42 @@
+.game-mode {
+    width: 90%;
+    height: 30px;
+    padding: 10px 0;
+    margin: 0 auto;
+    display: flex;
+}
+
+.game-mode p {
+    height: 30px;
+    line-height: 30px;
+    font-size: 0.5em;
+    white-space: nowrap;
+}
+
+.game-mode .modes {
+    display: flex;
+    overflow-x: scroll;
+    margin-left: 10px;
+}
+
+.game-mode .modes::-webkit-scrollbar {
+    display: none;
+}
+
+.game-mode a {
+    height: 28px;
+    line-height: 28px;
+    padding: 0 15px;
+    margin: 0px 10px;
+    letter-spacing: 0.3em;
+    border-radius: 15px;
+    border: solid 1px gray;
+    font-size: 0.5em;
+    color: black;
+    white-space: pre;
+}
+
+.game-mode .now {
+    background-color: gray;
+    color: white;
+}
