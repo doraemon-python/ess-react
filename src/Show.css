@@ -8,6 +8,10 @@
     display: flex;
 }
 
+.word_block:active {
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
+}
+
 #word_blocks .correct {
     background-color: rgb(206, 249, 250);
 }

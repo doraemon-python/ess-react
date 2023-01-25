@@ -5,7 +5,7 @@ import './DashBord.css'
 
 const DashBord = (props) => {
   const student_id = useParams().student_id;
-  const url = `https://3saq93.deta.dev/api/user/?kind=${props.kind}&student_id=${student_id}`;
+  const url = `${process.env.REACT_APP_MY_API_SITE}/api/user/?kind=${props.kind}&student_id=${student_id}`;
   const [userdata, setUserdata] = useState();
 
   

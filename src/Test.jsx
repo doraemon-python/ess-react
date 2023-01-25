@@ -12,18 +12,23 @@ const Test = (props) => {
   const [correctOrIncorrect, setCorrectOrInCorrect] = useState([]);
   const [correctNumber, setcorrectNumber] = useState(0);
   const [incorrectNumber, setincorrectNumber] = useState(0);
-  const url = `https://3saq93.deta.dev/api/${props.whatTest[1]}/?kind=${props.whatTest[2]}&stage=Stage${props.whatTest[3]}&chapter=${props.whatTest[4]}&student_id=${props.whatTest[5]}`
+  const [quizOk, setquizOk] = useState(true)
+  const url = `${process.env.REACT_APP_MY_API_SITE}/api/${props.whatTest[1]}/?kind=${props.whatTest[2]}&stage=Stage${props.whatTest[3]}&chapter=${props.whatTest[4]}&student_id=${props.whatTest[5]}`
   const countAnswer = () => {
     setcorrectNumber(document.getElementsByClassName('correct').length);
     setincorrectNumber(document.getElementsByClassName('incorrect').length);
   };
   useEffect(() => {
     fetch(url).then((response) => response.json()).then((data) => {
-      setIndexList(data.map((item) => item[0]));
-      setAnswerList(data.map((item) => item[1]));
-      setQuestionList(data.map((item) => item[2]));
-    })
-  }, [url]);
+      if (data.length >= 1) {
+        setIndexList(data.map((item) => item[0]));
+        setAnswerList(data.map((item) => item[1]));
+        setQuestionList(data.map((item) => item[2]));
+      } else {
+        setquizOk(false)
+      };
+    });
+  }, [url, indexList.length]);
 
   const quizProceed = (correct) => {
     setQuizIndex(quizIndex + 1);
@@ -32,21 +37,50 @@ const Test = (props) => {
     } else {
       setCorrectOrInCorrect([...correctOrIncorrect, false])
     }
+    if(quizIndex >= indexList.length - 1){
+      document.querySelector('.gamepad').style.display = 'none';
+  };
     setAnswerOpen(false);
   };
 
+  const endQuiz = () => {
+    let correctDivs = document.querySelectorAll(".correct .index");
+    let correct = [];
+    for (let i = 0; i < correctDivs.length; i++) {
+      correct.push(correctDivs[i].textContent);
+    }
+    let incorrectDivs = document.querySelectorAll(".incorrect .index");
+    let incorrect = [];
+    for (let i = 0; i < incorrectDivs.length; i++) {
+      incorrect.push(incorrectDivs[i].textContent);
+    }
+    fetch(`${process.env.REACT_APP_MY_API_SITE}/api/result`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'correct': correct,
+        'incorrect': incorrect,
+        'kind': props.whatTest[2],
+        'student_id': props.whatTest[5],
+      })
+    });
+    props.setScreen('home');
+  };
+
   return (
-    <>
+    <div className='quiz_screen'>
       <div className="game">
         <div id="word_blocks">
           {/* 逆順に並べるため */}
           {Array(quizIndex).fill('').map((item, index) => <WordBlock key={quizIndex - 1 - index} countAnswer={countAnswer} correct={correctOrIncorrect[quizIndex - 1 -index]} index={indexList[quizIndex - 1 - index]} answer={answerList[quizIndex - 1 - index]} question={questionList[quizIndex - 1 - index]} />)} 
         </div>
-        {quizIndex >= indexList.length && (
-          <button onClick={() => props.setScreen('home')} className='to_home'>保存</button>
+        {quizIndex >= indexList.length &&indexList.length > 0 && (
+          <button onClick={() => endQuiz()} className= 'to_home'>保存</button>
         )}
       </div>
-      {quizIndex < indexList.length && (
+      {quizOk && (
         <div className="gamepad">
           <div className="info">
             <div className="left-info">
@@ -63,7 +97,16 @@ const Test = (props) => {
           </div>
         </div>
       )}
-    </>
+      {!quizOk && (
+        <div class="non-incorrect">
+          <div class="message">
+            <p>間違えた問題はありません。</p>
+            <p>他のモードを選択してください。</p>
+          </div>
+          <button onClick={() => props.setScreen('home')} className= 'to_home'>戻る</button>
+        </div>
+      )}
+    </div>
   )
 }
 

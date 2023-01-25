@@ -5,7 +5,7 @@ const Show = (props) => {
   const [indexList, setIndexList] = useState([]);
   const [answerList, setAnswerList] = useState([]);
   const [questionList, setQuestionList] = useState([]);
-  const url = `http://127.0.0.1:8000/api/${props.whatTest[1]}/?kind=${props.whatTest[2]}&stage=Stage${props.whatTest[3]}&chapter=${props.whatTest[4]}&student_id=${props.whatTest[5]}`
+  const url = `${process.env.REACT_APP_MY_API_SITE}/api/${props.whatTest[1]}/?kind=${props.whatTest[2]}&stage=Stage${props.whatTest[3]}&chapter=${props.whatTest[4]}&student_id=${props.whatTest[5]}`
   useEffect(() => {
     fetch(url).then((response) => response.json()).then((data) => {
       setIndexList(data.map((item) => item[0]));
