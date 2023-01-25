@@ -21,7 +21,7 @@ const Header = (props) => {
     <>
     <div className='header'>
       <header>
-      <Link onClick={() => props.setScreen('home')} to={`/${student_id}/words`}><img src={`${process.env.PUBLIC_URL}/icon.png`} alt=''/>ESS</Link>
+      <Link onClick={() => props.setScreen('home')} to={`/22/words`}><img src={`${process.env.PUBLIC_URL}/icon.png`} alt=''/>ESS</Link>
       <nav onClick={classToggle}>
         <div className='bar'></div>
         <div className='bar'></div>
