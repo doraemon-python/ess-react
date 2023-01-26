@@ -56,6 +56,7 @@ const Test = (props) => {
     }
     fetch(`${process.env.REACT_APP_MY_API_SITE}/api/result`, {
       method: 'POST',
+      mode: 'cors',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -98,8 +99,8 @@ const Test = (props) => {
         </div>
       )}
       {!quizOk && (
-        <div class="non-incorrect">
-          <div class="message">
+        <div className="non-incorrect">
+          <div className="message">
             <p>間違えた問題はありません。</p>
             <p>他のモードを選択してください。</p>
           </div>
