@@ -54,19 +54,14 @@ const Test = (props) => {
     for (let i = 0; i < incorrectDivs.length; i++) {
       incorrect.push(incorrectDivs[i].textContent);
     }
-    fetch(`${process.env.REACT_APP_MY_API_SITE}/api/result`, {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
+    props.setTestData(
+      {
         'correct': correct,
         'incorrect': incorrect,
         'kind': props.whatTest[2],
-        'student_id': props.whatTest[5],
-      })
-    });
+        'student_id': props.whatTest[5]
+      }
+    )
     props.setScreen('home');
   };
 
