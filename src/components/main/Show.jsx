@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './Show.css'
+import '../../css/Show.css'
 
 const Show = (props) => {
   const [indexList, setIndexList] = useState([]);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import './DashBord.css'
+import '../../../css/DashBord.css'
 
 
 const DashBord = (props) => {

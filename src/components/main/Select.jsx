@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import './Select.css'
+import '../../css/Select.css'
 
 const Select = (props) => {
   const student_id = useParams().student_id;

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import './Test.css';
-import WordBlock from './WordBlock';
+import '../../css/Test.css';
+import WordBlock from './test/WordBlock';
 
 const Test = (props) => {
   const [indexList, setIndexList] = useState([]);
@@ -20,10 +20,10 @@ const Test = (props) => {
   };
   useEffect(() => {
     fetch(url).then((response) => response.json()).then((data) => {
-      if (data.length >= 1) {
-        setIndexList(data.map((item) => item[0]));
-        setAnswerList(data.map((item) => item[1]));
-        setQuestionList(data.map((item) => item[2]));
+      if (data.data.length >= 1) {
+        setIndexList(data.data.map((item) => item[0]));
+        setAnswerList(data.data.map((item) => item[1]));
+        setQuestionList(data.data.map((item) => item[2]));
       } else {
         setquizOk(false)
       };
@@ -54,14 +54,21 @@ const Test = (props) => {
     for (let i = 0; i < incorrectDivs.length; i++) {
       incorrect.push(incorrectDivs[i].textContent);
     }
-    props.setTestData(
-      {
-        'correct': correct,
-        'incorrect': incorrect,
-        'kind': props.whatTest[2],
-        'student_id': props.whatTest[5]
-      }
-    )
+    fetch(`${process.env.REACT_APP_MY_API_SITE}/api/result/`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(
+        {
+          'correct': correct,
+          'incorrect': incorrect,
+          'kind': props.whatTest[2],
+          'student_id': props.whatTest[5],
+        }
+      )
+    });
     props.setScreen('home');
   };
 

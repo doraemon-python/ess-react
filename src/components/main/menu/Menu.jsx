@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import DashBord from './DashBord';
-import './Menu.css';
+import '../../../css/Menu.css';
 
 const Menu = (props) => {
   const student_id = useParams().student_id;

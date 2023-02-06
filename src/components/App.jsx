@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Header from './Header';
-import Main from './Main';
+import Header from './home/Header';
+import Main from './home/Main';
 
 function App() {
   const [screen, setScreen] = useState('home');

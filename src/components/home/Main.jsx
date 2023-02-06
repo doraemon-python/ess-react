@@ -1,29 +1,14 @@
-import React, { useEffect } from 'react'
 import { useState } from 'react'
-import About from './About'
-import Content from './Content'
-import Menu from './Menu'
-import Test from './Test'
-import Select from './Select'
-import Show from './Show'
+import About from '../main/About'
+import Content from '../main/Content'
+import Menu from '../main/menu/Menu'
+import Test from '../main/Test'
+import Select from '../main/Select'
+import Show from '../main/Show'
 
 const Main = (props) => {
   const [whatTest, setWhatTest] = useState([]);
-  const [testData, setTestData] = useState();
 
-  useEffect(() => {
-    if (testData) {
-      fetch(`${process.env.REACT_APP_MY_API_SITE}/api/result`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(testData)
-      });
-    }
-  }, [testData])
-  
   const contentState = () => {
     if (props.kind !== 'about') {
       if (props.screen === 'home') {
@@ -31,7 +16,7 @@ const Main = (props) => {
       } else if (props.screen === 'select') {
         return <Select setScreen={props.setScreen} setWhatTest={setWhatTest} whatTest={whatTest} />
       } else if (props.screen === 'test') {
-        return <Test setScreen={props.setScreen} setTestData={setTestData} whatTest={whatTest}/>
+        return <Test setScreen={props.setScreen} whatTest={whatTest}/>
       } else if (props.screen === 'show') {
         return <Show setScreen={props.setScreen} whatTest={whatTest}/>
       }
