@@ -31,6 +31,7 @@ const Test = (props) => {
   }, [url, indexList.length]);
 
   const quizProceed = (correct) => {
+    window.navigator.vibrate(50);
     setQuizIndex(quizIndex + 1);
     if (correct) {
       setCorrectOrInCorrect([...correctOrIncorrect, true])
